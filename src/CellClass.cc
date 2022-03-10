@@ -68,8 +68,9 @@ void Cell::UpdateState() {
     }
   } else {
     if (neighbors_alive_ == 3) {
-      State temp_state{ALIVE};
-      cell_state_ = temp_state;
+      State *temp_state;
+      temp_state->SetState(ALIVE);
+      cell_state_ = *temp_state;
     } else {
       State temp_state{DEAD};
       cell_state_ = temp_state;
