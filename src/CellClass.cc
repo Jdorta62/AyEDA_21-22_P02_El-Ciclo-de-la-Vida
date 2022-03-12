@@ -24,7 +24,7 @@ Cell::Cell() {
 /**
  * @brief Constructor de la clase cell
  */
-Cell::Cell(State const &cell_state, std::pair<int, int> const &cell_position, int const &neighbors_alive) {
+Cell::Cell(State* const &cell_state, std::pair<int, int> const &cell_position, int const &neighbors_alive) {
   cell_state_ = cell_state;
   cell_position_ = cell_position;
   neighbors_alive_ = neighbors_alive;
@@ -40,7 +40,7 @@ Cell::~Cell() {
  * @brief getter que retorna el valor del atributo privado cell_state_
  * @return State 
  */
-State Cell::GetState() const {
+State* Cell::GetState() const {
   return cell_state_;
 }
 
@@ -49,40 +49,19 @@ State Cell::GetState() const {
  * @param state valor que tendrá el atributo privado cell_state_
  * @return State 
  */
-State Cell::SetState(State const &state) {
+State* Cell::SetState(State* const &state) {
   cell_state_ = state;
   return cell_state_;
 }
 
-/**
- * @brief método que actualiza el estado de la celula en base a las reglas de transición
- */
-void Cell::UpdateState() {
-  if (cell_state_ == ALIVE) {
-    if (neighbors_alive_ == 2 || neighbors_alive_ == 3) {
-      State temp_state{ALIVE};
-      cell_state_ = temp_state;
-    } else {
-      State temp_state{DEAD};
-      cell_state_ = temp_state;
-    }
-  } else {
-    if (neighbors_alive_ == 3) {
-      State *temp_state;
-      temp_state->SetState(ALIVE);
-      cell_state_ = *temp_state;
-    } else {
-      State temp_state{DEAD};
-      cell_state_ = temp_state;
-    }
-  }
-}
+
 
 /**
  * @brief método que calcula el número de celulas vivas vecinas de la célula invocante
  * @param grid rejilla en la que se encuentran todas las celulas
  * @return int 
  */
+/*
 int Cell::Neighbors(Grid const &grid) {
   if (cell_position_.first == -1 || cell_position_.second == -1) {
     return -1;
@@ -100,6 +79,7 @@ int Cell::Neighbors(Grid const &grid) {
   neighbors_alive_ = number_of_neihbors;
   return number_of_neihbors;
 }
+*/
 
 /**
  * @brief setter que permite inicializar o modificar el atributo privado cell_position_
@@ -144,10 +124,24 @@ int Cell::SetNeighborsAlive(int const &neighbors_alive) {
  * @return std::ostream& 
  */
 std::ostream& operator<<(std::ostream &os, Cell const &cell) {
-  if (cell.GetState() == ALIVE) {
-    os << "X";
-  } else {
-    os << "-"; //<< "[" << cell.GetPosition().first << "]" << "[" << cell.GetPosition().second << "]"
+  switch (cell.GetState()->GetState()) {
+  case 'D':
+    os << " ";
+    break;
+  case 'E':
+    os << "E";
+    break;
+  case 'L':
+    os << "L";
+    break;
+  case 'P':
+    os << "P";
+    break;
+  case 'A':
+    os << "A";
+    break;
+  default:
+    break;
   }
   return os;
 }

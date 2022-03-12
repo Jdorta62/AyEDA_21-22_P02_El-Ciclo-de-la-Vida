@@ -9,6 +9,7 @@
   * @date 04 March 2022.
   * @brief fichero de cabezera que contiene la declaración de la clase State.
   * @bug ningún bug conocido.
+  * @version 2.0
   * 
   */
 
@@ -17,16 +18,16 @@
 
 #include <iostream>
 #include <string>
+#include "../GridClass.h"
+
+class Grid;
 
 class State {
  public:
-  ~State();
-  virtual std::string GetState() const = 0;
-  void SetState(std::string const &state) {
-    state_ = state;
-  }
- protected:
-  std::string state_;
+  virtual ~State();
+  virtual char GetState() const = 0;
+  virtual int Neighbors(Grid const &grid, int i, int j) = 0;
+  virtual State* NextState() = 0;
 };
 
 /**
@@ -46,10 +47,10 @@ bool operator==(State const &state1, State const &state2) {
 /**
  * @brief sobrecarga del operador de comparación. Sierve para ver si 2 estados son iguales
  * @param state1 objeto State a comparar con el objeto string.
- * @param state2 string a comparar con el objeto State.
+ * @param state2 char a comparar con el objeto State.
  * @return bool 
  */
-bool operator==(State const &state1, std::string const &state2) {
+bool operator==(State const &state1, char const &state2) {
   if (state1.GetState() == state2) {
     return true;
   } else {
