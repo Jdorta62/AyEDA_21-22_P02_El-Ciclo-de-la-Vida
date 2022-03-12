@@ -79,6 +79,7 @@ const Cell& Grid::GetCell(int const &row, int const &column) const {
 /**
  * @brief método que actualiza el número estados de las células a partir del estado previo de las células.
  */
+/*
 void Grid::NextGeneration() {
   for(int i{1}; i < (rows_ - 1); ++i) {
     for(int j{1}; j < (columns_ - 1); ++j) {
@@ -95,22 +96,24 @@ void Grid::NextGeneration() {
     }
   }
 }
-
+*/
 /**
  * @brief método que permite cambiar el estado de una célula específica dentro de la rejilla
  * @param row numero de la fila
  * @param column numero de la columna
  * @param new_state estado al que va a cambiar
  */
-void Grid::StateChanger(int const &row, int const &column, State const &new_state) {
-  if (row == 0 || row == (rows_-1) || column == 0 || column == (columns_-1)) {
+
+
+void Grid::StateChanger(int const &row, int const &column, State* const &new_state) {
+  /*if (row == 0 || row == (rows_-1) || column == 0 || column == (columns_-1)) {
     std::cerr << "Error: not valid coordenate" << std::endl;
     exit(EXIT_FAILURE);
   }
   if (new_state.GetState() != ALIVE && new_state.GetState() != DEAD) {
     std::cerr << "Error: not valid cell state" << std::endl;
     exit(EXIT_FAILURE);     
-  }
+  }*/
   Cell new_cell = GetCell(row,column);
   new_cell.SetState(new_state);
   *(*(grid_pointer_+row)+column) = new_cell;
@@ -139,11 +142,22 @@ int Grid::GetColumns() const {
  * @return std::ostream& 
  */
 std::ostream& operator<<(std::ostream &os, Grid const &grid) {
+  os << " ";
+  for(size_t i{1}; i < grid.GetColumns()-1; ++i) {
+    os << "_";
+  }
+  os << std::endl;
   for (size_t i{1}; i < grid.GetRows()-1; ++i) {
+    os << "|";
     for (size_t j{1}; j < grid.GetColumns()-1; ++j) {
       os << grid.GetCell(i,j);
     }
-    os << std::endl;
+    os << "|" << std::endl;
   }
+  os << " ";
+  for(size_t i{1}; i < grid.GetRows()-1; ++i) {
+    os << "¯";
+  }
+  os << std::endl;
   return os;
 }

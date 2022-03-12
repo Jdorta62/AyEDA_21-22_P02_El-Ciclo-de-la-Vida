@@ -15,12 +15,7 @@
 #ifndef CELLCLASS_H
 #define CELLCLASS_H
 
-#include "StatesClasses/StateClass.h"
-#include "StatesClasses/StateDeadClass.h"
-#include "StatesClasses/StateEggClass.h"
-#include "StatesClasses/StateLarvaClass.h"
-#include "StatesClasses/StatePupaClass.h"
-#include "StatesClasses/StateAdultClass.h"
+#include "StateClass.h"
 #include "GridClass.h"
 #include <utility>
 
@@ -36,13 +31,12 @@ class Cell {
   ~Cell();
   State* GetState() const;
   State* SetState(State* const &state);
-  int Neighbors(Grid const &grid);
   void SetPosition(int const &row, int const &column);
   std::pair<int, int> GetPosition() const;
   int GetNeighborsAlive() const;
   int SetNeighborsAlive(int const &neighbors_alive);
  private:
-  State* cell_state_ = new StateDead();
+  State* cell_state_;
   std::pair<int, int> cell_position_{-1,-1};
   int neighbors_alive_{-2};
 };

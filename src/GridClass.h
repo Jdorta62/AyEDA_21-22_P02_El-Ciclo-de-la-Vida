@@ -16,6 +16,12 @@
 #define GRIDCLASS_H
 
 #include "CellClass.h"
+#include "StateClass.h"
+#include "StateDeadClass.h"
+#include "StateEggClass.h"
+#include "StateLarvaClass.h"
+#include "StatePupaClass.h"
+#include "StateAdultClass.h"
 
 class Cell;
 
@@ -25,8 +31,8 @@ class Grid {
   Grid(Cell **grid_pointer, int const &rows, int const &columns);
   ~Grid();
   const Cell& GetCell(int const &row, int const &column) const;
-  void NextGeneration(/*Grid temp_grid*/);
-  void StateChanger(int const &row, int const &column, State const &new_state);
+  void NextGeneration();
+  void StateChanger(int const &row, int const &column, State* const &new_state);
   int GetRows() const;
   int GetColumns() const;
  private:

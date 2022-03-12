@@ -16,9 +16,15 @@
 #include "StateEggClass.h"
 
 /**
- * @brief cosntructor de la clase
+ * @brief constructor de la clase
  */
 StateEgg::StateEgg() {
+}
+
+/**
+ * @brief Destroy the State Egg:: State Egg object
+ */
+StateEgg::~StateEgg() {
 }
 
 /**
@@ -40,12 +46,23 @@ int StateEgg::Neighbors(Grid const &grid, int i, int j) {
   if (i <= 0 || j <= 0 || i >= grid.GetRows() - 1 || j >= grid.GetColumns() - 1) {
     return -1;
   }
+  int number_of_neighbors_egg_state_counter{0};
+  int number_of_neighbors_larva_state_counter{0};
   for(int k{i-1}; k <= i + 1; ++k) {
     for(int l{j-1}; l <= j + 1; ++l) {
-      
-      if (k > 0 && l > 0 && k < grid.GetRows() - 1 && l < grid.GetColumns() - 1)
+      if (k > 0 && l > 0 && k < grid.GetRows() - 1 && l < grid.GetColumns() - 1 && (k != i || l != j)) {
+        Cell temp_cell = grid.GetCell(k,l);
+        if(temp_cell.GetState()->GetState() == 'E') {
+          ++number_of_neighbors_egg_state_counter;
+        } else if (temp_cell.GetState()->GetState() == 'L') {
+          ++number_of_neighbors_larva_state_counter;
+        }
+      }
     }
   }
+  number_of_neighbors_egg_state_ = number_of_neighbors_egg_state_counter;
+  number_of_neighbors_larva_state_ = number_of_neighbors_larva_state_counter;
+  return number_of_neighbors_egg_state_;
 }
 
 /**

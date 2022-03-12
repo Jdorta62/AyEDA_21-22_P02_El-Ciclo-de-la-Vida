@@ -19,6 +19,7 @@
  * @brief Constructor por defecto de la clase cell
  */
 Cell::Cell() {
+  cell_state_ = new StateDead();
 }
 
 /**

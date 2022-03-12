@@ -4,28 +4,34 @@
   * Grado en Ingeniería Informática
   * Computabilidad y Algoritmia
   *
-  * @file StateDeadClass.h
+  * @file StatePupaClass.h
   * @author Jose Dorta Luis alu0101414676@ull.edu.es
   * @date 12 March 2022.
-  * @brief fichero de cabezera que contiene la declaración de la clase StateDead.
+  * @brief fichero de cabezera que contiene la declaración de la clase StatePupa.
   * @bug ningún bug conocido.
   * @version 1.0
   * 
   */
 
-#ifndef STATEDEADCLASS_H
-#define STATEDEADCLASS_H
+#ifndef STATEPUPACLASS_H
+#define STATEPUPACLASS_H
 
 #include "StateClass.h"
+#include "CellClass.h"
+#include "GridClass.h"
 
-class StateDead : public State {
+class StatePupa : public State {
  public:
-  StateDead();
+  StatePupa();
+  ~StatePupa();
   char GetState() const override;
   int Neighbors(Grid const &grid, int i, int j) override;
   State* NextState() override;
+
  private: 
-  char const kdead_state_ = 'D';
+  char const kpupa_state_ = 'P';
+  int number_of_neighbors_larva_state_;
+  int number_of_neighbors_else_state_;
 };
 
 #endif

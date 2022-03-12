@@ -20,7 +20,7 @@
 cmake_minimum_required(VERSION 3.1)  
 
 # set the project name 
-project(JuegoDeLaVida               
+project(Prueba               
     VERSION 1.0
     DESCRIPTION "file .exe practica1 de AyEDA, implementación del juego de la vida"
     LANGUAGES CXX)
@@ -49,6 +49,15 @@ add_executable(JuegoDeLaVida
     src/CellClass.h
     src/GridClass.cc
     src/GridClass.h
-    src/StateClass.cc
-    src/StateClass.h
-    src/JuegoDeLaVida.cc)
+    src/StatesClasses/StateClass.h
+    src/StatesClasses/StateAdultClass.h
+    src/StatesClasses/StateAdultClass.cc
+    src/StatesClasses/StateDeadClass.h
+    src/StatesClasses/StateDeadClass.cc
+    src/StatesClasses/StateEggClass.h
+    src/StatesClasses/StateEggClass.cc
+    src/StatesClasses/StateLarvaClass.h
+    src/StatesClasses/StateLarvaClass.cc
+    src/StatesClasses/StatePupaClass.h
+    src/StatesClasses/StatePupaClass.cc
+    src/prueba.cc)
