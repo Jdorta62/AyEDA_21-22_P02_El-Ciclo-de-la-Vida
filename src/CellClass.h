@@ -27,18 +27,17 @@ class Grid;
 class Cell {
  public:
   Cell();
-  Cell(State* const &cell_state, std::pair<int, int> const &cell_position, int const &neighbors_alive);
+  Cell(State* const &cell_state, std::pair<int, int> const &cell_position);
   ~Cell();
   State* GetState() const;
   State* SetState(State* const &state);
   void SetPosition(int const &row, int const &column);
+  void UpdateState();
+  int Neighbors(Grid const &grid);
   std::pair<int, int> GetPosition() const;
-  int GetNeighborsAlive() const;
-  int SetNeighborsAlive(int const &neighbors_alive);
  private:
   State* cell_state_;
   std::pair<int, int> cell_position_{-1,-1};
-  int neighbors_alive_{-2};
 };
 
 std::ostream& operator<<(std::ostream &os, Cell const &cell);

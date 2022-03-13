@@ -25,10 +25,9 @@ Cell::Cell() {
 /**
  * @brief Constructor de la clase cell
  */
-Cell::Cell(State* const &cell_state, std::pair<int, int> const &cell_position, int const &neighbors_alive) {
+Cell::Cell(State* const &cell_state, std::pair<int, int> const &cell_position) {
   cell_state_ = cell_state;
   cell_position_ = cell_position;
-  neighbors_alive_ = neighbors_alive;
 }
 
 /**
@@ -55,32 +54,28 @@ State* Cell::SetState(State* const &state) {
   return cell_state_;
 }
 
-
+/**
+ * @brief método que actualiza el estado de una celula
+ */
+void Cell::UpdateState() {
+  State* temp_state = cell_state_->NextState();
+  cell_state_ = temp_state;
+}
 
 /**
  * @brief método que calcula el número de celulas vivas vecinas de la célula invocante
  * @param grid rejilla en la que se encuentran todas las celulas
  * @return int 
  */
-/*
+
 int Cell::Neighbors(Grid const &grid) {
   if (cell_position_.first == -1 || cell_position_.second == -1) {
     return -1;
   }
-  int number_of_neihbors{0};
-  for(int i{cell_position_.first - 1}; i <= (cell_position_.first + 1); ++i) {
-    for(int j{cell_position_.second - 1}; j <= (cell_position_.second + 1); ++j) {
-      if ((i != cell_position_.first || j != cell_position_.second) && i != 0 && i != grid.GetRows() - 1 && j != 0 && j != grid.GetColumns() - 1) {
-        if(grid.GetCell(i,j).GetState() == ALIVE) {
-          ++number_of_neihbors;
-        }
-      }
-    }
-  }
-  neighbors_alive_ = number_of_neihbors;
-  return number_of_neihbors;
+  cell_state_->Neighbors(grid, cell_position_.first, cell_position_.second);
+  return 0;
 }
-*/
+
 
 /**
  * @brief setter que permite inicializar o modificar el atributo privado cell_position_
@@ -101,48 +96,16 @@ std::pair<int, int> Cell::GetPosition() const {
 }
 
 /**
- * @brief getter que retorna el atributo privado neighbors_alive_
- * @return int 
- */
-int Cell::GetNeighborsAlive() const {
-  return neighbors_alive_;
-}
-
-/**
- * @brief setter que permite inicializar o modificar el atributo privado
- * @param neighbors_alive nuevo valor para el atributo privado
- * @return int 
- */
-int Cell::SetNeighborsAlive(int const &neighbors_alive) {
-  neighbors_alive_ = neighbors_alive;
-  return neighbors_alive_;
-}
-
-/**
  * @brief sobrecarga del operacdor de insersión <<.
  * @param os variable que almacena lo que se quiere insertar en el flujo de salida.
  * @param cell objeto Cell que se va a imprimir por pantalla
  * @return std::ostream& 
  */
 std::ostream& operator<<(std::ostream &os, Cell const &cell) {
-  switch (cell.GetState()->GetState()) {
-  case 'D':
+  if (cell.GetState()->GetState() == 'D') {
     os << " ";
-    break;
-  case 'E':
-    os << "E";
-    break;
-  case 'L':
-    os << "L";
-    break;
-  case 'P':
-    os << "P";
-    break;
-  case 'A':
-    os << "A";
-    break;
-  default:
-    break;
+  } else {
+    os << cell.GetState()->GetState();
   }
   return os;
 }

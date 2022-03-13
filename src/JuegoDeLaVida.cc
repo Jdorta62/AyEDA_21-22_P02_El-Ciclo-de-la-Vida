@@ -54,40 +54,5 @@ int main() {
       std::cout << grid << std::endl;
     }
   }
-/*
-  State vivo{ALIVE};
-  State muerto{DEAD};
-  grid.StateChanger(1,1,vivo);
-  grid.StateChanger(2,2,vivo);
-  grid.StateChanger(3,3,vivo);
-  grid.StateChanger(4,4,vivo);
-  grid.StateChanger(10,9,vivo);
-  grid.StateChanger(9,10,vivo);
-  grid.StateChanger(9,9,vivo);
-  std::cout << grid << std::endl;
-  Cell tmp = grid.GetCell(10,10);
-  grid.NextGeneration(/*grid);
-  std::cout << grid;*/
   return 0;
 }
-
-
-/*
-  int filas, columnas;
-  std::cin >> filas;
-  std::cin >> columnas;
-  int matriz[filas][columnas];
-
-  for(int i{0}; i < filas; ++i) {
-    for(int j{0}; j < columnas; ++j) {
-      std::cin >> matriz[i][j];
-    }
-  }
-
-  for(int i{0}; i < filas; ++i) {
-    for(int j{0}; j < columnas; ++j) {
-      std::cout << matriz[i][j] << " ";
-    }
-    std::cout << std::endl;
-  }
-*/
