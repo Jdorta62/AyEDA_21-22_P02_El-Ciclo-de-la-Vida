@@ -57,11 +57,14 @@ int StatePupa::Neighbors(Grid const &grid, int i, int j) {
         } else {
           ++number_of_neighbors_else_state_counter;
         }
+      } else if ( k == 0 || l == 0 || k == grid.GetRows() - 1 || l == grid.GetColumns() - 1) {
+        ++number_of_neighbors_else_state_counter;
       }
     }
   }
   number_of_neighbors_larva_state_ = number_of_neighbors_larva_state_counter;
   number_of_neighbors_else_state_ = number_of_neighbors_else_state_counter;
+  //std::cout << "Soy del estado pupa. " << number_of_neighbors_larva_state_ << number_of_neighbors_else_state_ << std::endl;
   return number_of_neighbors_else_state_;
 }
 

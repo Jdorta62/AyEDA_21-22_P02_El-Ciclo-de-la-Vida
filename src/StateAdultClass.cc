@@ -58,6 +58,7 @@ int StateAdult::Neighbors(Grid const &grid, int i, int j) {
     }
   }
   another_adult_ = another_adult;
+  //std::cout << "Soy del estado adulta. " << another_adult_ << std::endl;
   if (another_adult_) {
     return 1;
   }

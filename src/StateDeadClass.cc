@@ -59,6 +59,7 @@ int StateDead::Neighbors(Grid const &grid, int i, int j) {
     }
   }
   number_of_neighbors_adult_state_ = number_of_neighbors_adult_state_counter;
+  //std::cout << "Soy del estado muerta. " << number_of_neighbors_adult_state_ << std::endl;
   return number_of_neighbors_adult_state_;
 }
 
@@ -67,9 +68,9 @@ int StateDead::Neighbors(Grid const &grid, int i, int j) {
  * @return State* 
  */
 State* StateDead::NextState() {
-  State* next_state = new StateEgg();
-  if (number_of_neighbors_adult_state_ < 2) {
-    next_state = new StateDead();
+  State* next_state = new StateDead();
+  if (number_of_neighbors_adult_state_ >= 2) {
+    next_state = new StateEgg();
   }
   return next_state;
 }

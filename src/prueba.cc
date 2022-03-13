@@ -22,3 +22,33 @@ int main() {
   TurnPrinter(my_grid, number_of_turns);
   return 0;
 }
+
+/*
+  Grid grid{5,15};
+  std::cout << grid;
+  grid.StateChanger(2,1,new StateEgg());
+  grid.StateChanger(2,2,new StateEgg());
+  grid.StateChanger(3,9,new StateEgg());
+  grid.StateChanger(3,1,new StateLarva());
+  grid.StateChanger(4,6,new StateLarva());
+  grid.StateChanger(3,8,new StateLarva());
+  grid.StateChanger(2,4,new StatePupa());
+  grid.StateChanger(3,6,new StatePupa());
+  grid.StateChanger(3,2,new StateAdult());
+  grid.StateChanger(2,5,new StateAdult());
+  grid.StateChanger(3,4,new StateAdult());
+  grid.StateChanger(3,10,new StateAdult());
+  std::cout << grid;
+  grid.NextGeneration();
+  std::cout << grid;
+  grid.NextGeneration();
+  std::cout << grid;
+  grid.NextGeneration();
+  std::cout << grid;
+  grid.NextGeneration();
+  std::cout << grid;
+  grid.NextGeneration();
+  std::cout << grid;
+  grid.NextGeneration();
+  std::cout << grid;  
+*/

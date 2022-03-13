@@ -62,6 +62,7 @@ int StateEgg::Neighbors(Grid const &grid, int i, int j) {
   }
   number_of_neighbors_egg_state_ = number_of_neighbors_egg_state_counter;
   number_of_neighbors_larva_state_ = number_of_neighbors_larva_state_counter;
+  //std::cout << "Soy del estado huevo. " << number_of_neighbors_egg_state_ << number_of_neighbors_larva_state_ << std::endl;
   return number_of_neighbors_egg_state_;
 }
 

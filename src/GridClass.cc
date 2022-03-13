@@ -150,7 +150,7 @@ std::ostream& operator<<(std::ostream &os, Grid const &grid) {
     os << "|" << std::endl;
   }
   os << " ";
-  for(size_t i{1}; i < grid.GetRows()-1; ++i) {
+  for(size_t i{1}; i < grid.GetColumns()-1; ++i) {
     os << "¯";
   }
   os << std::endl;

@@ -62,6 +62,7 @@ int StateLarva::Neighbors(Grid const &grid, int i, int j) {
   }
   number_of_neighbors_egg_pupa_adult_state_ = number_of_neighbors_egg_pupa_adult_state_counter;
   number_of_neighbors_larva_state_ = number_of_neighbors_larva_state_counter;
+  //std::cout << "Soy del estado larva. " << number_of_neighbors_egg_pupa_adult_state_ << number_of_neighbors_larva_state_ << std::endl;
   return number_of_neighbors_larva_state_;
 }
 

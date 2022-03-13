@@ -16,6 +16,6 @@
 #include "GridClass.h"
 
 void GridUserModificator(Grid &grid, int const &rows, int const &columns);
-void PositionUserSelector(Grid &grid, int const &rows, int const &columns, State* const &new_state, std::string const &state_type);
+void PositionUserSelector(Grid &grid, int const &rows, int const &columns, std::string const &state_type);
 void MessageErrorPrinter(std::string error_message);
 void TurnPrinter(Grid &grid, int const &number_of_turns);

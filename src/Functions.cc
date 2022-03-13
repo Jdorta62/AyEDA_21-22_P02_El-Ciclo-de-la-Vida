@@ -33,35 +33,32 @@ void GridUserModificator(Grid &grid, int const &rows, int const &columns) {
         valid_option = true;
         { 
           State* new_state = new StateDead();
-          PositionUserSelector(grid, rows, columns, new_state,"muerta");
+          PositionUserSelector(grid, rows, columns, "muerta");
         }
         break;
       case 'E':
-        valid_option = true;
-        { 
-          State* new_state = new StateEgg();
-          PositionUserSelector(grid, rows, columns, new_state,"huevo");
-        }
+        valid_option = true; 
+        PositionUserSelector(grid, rows, columns, "huevo");
         break;
       case 'L':
         valid_option = true;
         { 
           State* new_state = new StateLarva();
-          PositionUserSelector(grid, rows, columns, new_state,"larva");
+          PositionUserSelector(grid, rows, columns, "larva");
         }
         break;
       case 'P':
         valid_option = true;
         { 
           State* new_state = new StatePupa();
-          PositionUserSelector(grid, rows, columns, new_state,"pupa");
+          PositionUserSelector(grid, rows, columns, "pupa");
         }
         break;
       case 'A':
         valid_option = true;
         { 
           State* new_state = new StateAdult();
-          PositionUserSelector(grid, rows, columns, new_state,"adulta");
+          PositionUserSelector(grid, rows, columns, "adulta");
         }
         break;   
 
@@ -89,7 +86,7 @@ void GridUserModificator(Grid &grid, int const &rows, int const &columns) {
  * @param new_state estado al que pasaran las células escogidas por el usuario
  * @param state_type tipo de estado escogido por el usuario
  */
-void PositionUserSelector(Grid &grid, int const &rows, int const &columns, State* const &new_state, std::string const &state_type) {
+void PositionUserSelector(Grid &grid, int const &rows, int const &columns, std::string const &state_type) {
   int number_of_cells{0};
   std::cout << "Indique el número de células en estado " << state_type << " que desea [0," << rows*columns << "]: ";
   std::cin >> number_of_cells;
@@ -114,7 +111,22 @@ void PositionUserSelector(Grid &grid, int const &rows, int const &columns, State
       std::cout << "Ingrese la fila que ocupará la célula " << i << "[1," << columns << "]: ";
       std::cin >> user_column_cell;
     }
-    grid.StateChanger(user_row_cell, user_column_cell, new_state);
+    if (state_type == "muerta") {
+      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+    }
+    if (state_type == "huevo") {
+      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+    }
+    if (state_type == "larva") {
+      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+    }
+    if (state_type == "pupa") {
+      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+    }
+    if (state_type == "adulta") {
+      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+    }
+    
   }
 }
 

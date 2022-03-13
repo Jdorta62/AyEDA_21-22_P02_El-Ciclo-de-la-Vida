@@ -18,8 +18,7 @@
 /**
  * @brief Constructor por defecto de la clase cell
  */
-Cell::Cell() {
-  cell_state_ = new StateDead();
+Cell::Cell() : cell_state_{new StateDead()} {
 }
 
 /**
@@ -72,6 +71,7 @@ int Cell::Neighbors(Grid const &grid) {
   if (cell_position_.first == -1 || cell_position_.second == -1) {
     return -1;
   }
+  //std::cout << "Estado actual"
   cell_state_->Neighbors(grid, cell_position_.first, cell_position_.second);
   return 0;
 }
