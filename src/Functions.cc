@@ -31,10 +31,7 @@ void GridUserModificator(Grid &grid, int const &rows, int const &columns) {
       switch (option) {
       case 'D':
         valid_option = true;
-        { 
-          State* new_state = new StateDead();
-          PositionUserSelector(grid, rows, columns, "muerta");
-        }
+        PositionUserSelector(grid, rows, columns, "muerta");
         break;
       case 'E':
         valid_option = true; 
@@ -42,24 +39,15 @@ void GridUserModificator(Grid &grid, int const &rows, int const &columns) {
         break;
       case 'L':
         valid_option = true;
-        { 
-          State* new_state = new StateLarva();
-          PositionUserSelector(grid, rows, columns, "larva");
-        }
+        PositionUserSelector(grid, rows, columns, "larva");
         break;
       case 'P':
         valid_option = true;
-        { 
-          State* new_state = new StatePupa();
-          PositionUserSelector(grid, rows, columns, "pupa");
-        }
+        PositionUserSelector(grid, rows, columns, "pupa");
         break;
       case 'A':
         valid_option = true;
-        { 
-          State* new_state = new StateAdult();
-          PositionUserSelector(grid, rows, columns, "adulta");
-        }
+        PositionUserSelector(grid, rows, columns, "adulta");
         break;   
 
       default:
@@ -115,16 +103,16 @@ void PositionUserSelector(Grid &grid, int const &rows, int const &columns, std::
       grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
     }
     if (state_type == "huevo") {
-      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+      grid.StateChanger(user_row_cell, user_column_cell, new StateEgg());
     }
     if (state_type == "larva") {
-      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+      grid.StateChanger(user_row_cell, user_column_cell, new StateLarva());
     }
     if (state_type == "pupa") {
-      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+      grid.StateChanger(user_row_cell, user_column_cell, new StatePupa());
     }
     if (state_type == "adulta") {
-      grid.StateChanger(user_row_cell, user_column_cell, new StateDead());
+      grid.StateChanger(user_row_cell, user_column_cell, new StateAdult());
     }
     
   }

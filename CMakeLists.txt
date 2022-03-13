@@ -60,4 +60,4 @@ add_executable(JuegoDeLaVida
     src/StatesClasses/StateLarvaClass.cc
     src/StatesClasses/StatePupaClass.h
     src/StatesClasses/StatePupaClass.cc
-    src/prueba.cc)
+    src/CicloDeLaVida.cc)
